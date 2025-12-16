@@ -8,7 +8,6 @@ from src.youtube_uploader import upload
 from src.story_generator import StoryGenerator
 from src.audion_generation.AudioGenerator import AudioGenerator
 from src.image_generation import ImageGenerator
-from src.utils.ThumbnailGenerator import ThumbnailGenerator
 from src.utils import Utils
 
 
