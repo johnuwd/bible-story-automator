@@ -7,23 +7,18 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 
-TOPIC = "The Story of Joseph and his Coat"
+def upload_video_to_youtube(video_file_path, meta_data):
+    
+    # Path to your token file in Drive
+    TOKEN_PATH = "src\\youtube_uploader\\token.json" 
 
-
-# --- CONFIG ---
-# Path to your token file in Drive
-TOKEN_PATH = "token.json" 
-
-# Metadata for the video
-VIDEO_TITLE = f"{TOPIC} - Telugu Bible Story (AI Animation)"
-VIDEO_DESC = """
-This is a bible story generated using AI Tools.
-#Bible #Telugu #Christian #AI #Shorts
-"""
-TAGS = ["Bible", "Telugu", "Christian", "Jesus", "AI Animation"]
-CATEGORY_ID = "22" # 22 = People & Blogs
-
-def upload_video_to_youtube(video_file_path):
+    # Metadata for the video
+    VIDEO_TITLE = meta_data.get("title")
+    VIDEO_DESC = meta_data.get("description")
+    TAGS = meta_data.get("tags")
+    CATEGORY_ID = meta_data.get("category_id")
+    
+    
     if not os.path.exists(TOKEN_PATH):
         print(f"❌ Error: token.json not found at {TOKEN_PATH}")
         print("Please run the local script to generate it first.")
@@ -52,7 +47,7 @@ def upload_video_to_youtube(video_file_path):
             'categoryId': CATEGORY_ID
         },
         'status': {
-            'privacyStatus': 'public', # Start private to check for copyright issues first
+            'privacyStatus': 'private', # Start private to check for copyright issues first
             'selfDeclaredMadeForKids': False # Set True if strictly for kids app
         }
     }
@@ -74,8 +69,3 @@ def upload_video_to_youtube(video_file_path):
             
     print(f"✅ Upload Complete! Video ID: {response.get('id')}")
     print(f"🔗 Link: https://youtu.be/{response.get('id')}")
-
-# --- EXECUTE UPLOAD ---
-# This uses the output path from your previous step
-output_path = "The_Story_of_Joseph_and_his_Coat_Telugu.mp4"
-upload_video_to_youtube(output_path)
