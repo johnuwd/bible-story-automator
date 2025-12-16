@@ -11,7 +11,9 @@ SILICON_FLOW_API_KEY = os.getenv("SILICON_FLOW_API_KEY")
 # ==========================================
 # 3. IMAGE GENERATOR (SILICON FLOW / FLUX SCHNELL)
 # ==========================================
-def generate_image_flux(prompt, save_path):
+def generate_image_flux(prompt, save_path, seed):
+    final_seed = seed if seed is not None else random.randint(1, 999999999)
+    
     url = "https://api.siliconflow.com/v1/images/generations"
     headers = {
         "Authorization": f"Bearer {SILICON_FLOW_API_KEY}",
@@ -23,7 +25,7 @@ def generate_image_flux(prompt, save_path):
         "prompt": prompt,
         "image_size": "1024x576",
         "num_inference_steps": 4,
-        "seed": random.randint(1, 999999999)
+        "seed": final_seed
     }
 
     print(f"   🎨 Generating Image...", end="", flush=True)

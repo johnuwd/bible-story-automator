@@ -6,3 +6,6 @@ __pycache__/
 *.mp4
 *.png
 output/
+
+src/youtube_uploader/token.json
+src/youtube_uploader/client_secret.json

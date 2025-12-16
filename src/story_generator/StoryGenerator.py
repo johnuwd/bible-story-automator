@@ -30,6 +30,11 @@ def generate_story_script(topic):
     
     ### GOAL
     Create a highly engaging, emotional, and visually consistent script for a children's animation about "{topic}".
+    
+    ### SCENE RULES (How to decide when to make a new scene):
+    1. **Visual Shifts:** Create a NEW scene whenever the visual needs to change (e.g., character moves, new person enters, mood shifts from happy to sad).
+    2. **Pacing:** Never let a single scene's narration go longer than 3 sentences. If the text is long, split it into two scenes with slightly different visuals (e.g., Wide Shot -> Close Up).
+    3. **Completeness:** Ensure the story has a clear Beginning, Middle, and End.
 
     ### ROLE 1: The English Storyteller (Narration)
     - **Tone:** Warm, deep, emotional, and captivating. Think "Disney Movie Narrator".
@@ -40,10 +45,12 @@ def generate_story_script(topic):
         - **Dialogue:** Include characters speaking! "Joseph cried out, 'Please, brothers, do not do this!'"
     
     ### ROLE 2: The Visual Director (Image Prompts)
-    - **The Problem:** AI image generators forget character details between scenes.
-    - **The Solution:** You must output a "Master Character Anchor" and then specific actions.
-    - **Visual Action:** Describe the CAMERA ANGLE, LIGHTING, and ACTION. Do not re-describe the character's face/clothes (we will use the anchor for that).
-    - **Sync:** The visual MUST depict the *exact moment* happening in the narration.
+    - **CRITICAL RULE:** Do not use abstract words like "brave", "sad", or "faithful".
+    - **INSTEAD:** Describe physical actions. 
+      - Bad: "David looks brave."
+      - Good: "Low angle shot of David holding a sling, eyebrows frowned, looking up at the sky."
+    - **Structure:** Start EVERY visual_action with the camera angle (e.g., "Wide shot of...", "Close up of...").
+    - **Sync:** The visual MUST depict the *exact moment* described in the narration.
 
     ### OUTPUT FORMAT (Strict JSON only, no markdown):
     {{
