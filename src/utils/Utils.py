@@ -29,12 +29,12 @@ def video_clip_generation(audio_path, img_path):
         
         return image_clip
 
-def assemble_video(video_clips, base_dir):
+def assemble_video(video_clips, base_dir, language):
         # --- 3. Final Assembly ---
     print("\n📼 Assembling Final Video...")
     if video_clips:
         final_video = concatenate_videoclips(video_clips, method="compose")
-        output_video_path = os.path.join(base_dir, "Final_Video.mp4")
+        output_video_path = os.path.join(base_dir, f"Final_Video_{language}.mp4")
         
         # Added audio_codec="aac" for better compatibility
         final_video.write_videofile(output_video_path, fps=24, codec="libx264", audio_codec="aac")

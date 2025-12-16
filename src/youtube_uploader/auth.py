@@ -7,7 +7,7 @@ SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 print(os.getcwd())
 
 TOKEN_PATH = "src\\youtube_uploader\\token.json" 
-SECRETS_PATH = "src\\youtube_uploader\\client_secret.json" 
+SECRETS_PATH = "src\\youtube_uploader\\client_secret_anu.json" 
 
 def generate_token():
     # Make sure client_secrets.json is in the same folder
